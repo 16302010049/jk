@@ -1,0 +1,33 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('~pic/未登录.jpg');
+  background-size: cover;
+  margin-left: 1655px;
+}
+
+.mat-icon{
+  margin-right:5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.po {
+  max-height: 400px;
+  max-width: 400px;
+}
+
+.mat-card{
+  display: none;
+}
+

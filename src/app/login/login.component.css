@@ -1,0 +1,10 @@
+.logintable{
+  display: flex;
+  flex-direction: column;
+  width:400px;
+}
+
+.register{
+  color: blue;
+  cursor: pointer;
+}
