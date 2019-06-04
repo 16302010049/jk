@@ -1,24 +1,11 @@
-FROM node AS builder
-# set working directory
-WORKDIR /app
+FROM node:10
+RUN npm install pm2 -g
 
-# install and cache app dependencies
-COPY . /app
-
-# install dependencies and build the angular app
-RUN yarn && yarn run build
-
-FROM nginx:stable-alpine
-
-# copy from dist to nginx root dir
-COPY --from=builder /app/dist/WebPJ /usr/share/nginx/html
-
-# expose port 80
-EXPOSE 80
-
-# set author info
-LABEL maintainer="WebPJ"
-
-# run nginx in foreground
-# https://stackoverflow.com/questions/18861300/how-to-run-nginx-within-a-docker-container-without-halting
-CMD ["nginx", "-g", "daemon off;"]
+# 复制项目到容器目录下ADD ./backend /usr/src/app
+# 设置工作目录
+WORKDIR /usr/src/app
+# 开启node进程
+CMD ["pm2", "start", "app.js", "--no-daemon"]
+# RUN pm2 start app.js --no-daemon
+# 暴露端口
+EXPOSE 8080
